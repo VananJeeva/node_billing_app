@@ -31,7 +31,7 @@ services:
       - .:/usr/app/
       - node_billing_app-node_modules:/usr/app/node_modules
     working_dir: /usr/app/
-    command: "npm start-app"
+    command: "${DC_APP_COMMAND}"
 networks:
   node_billing_app:
     driver: bridge
