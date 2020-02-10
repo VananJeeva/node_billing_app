@@ -1,0 +1,8 @@
+.docker/volumes/*
+
+node_modules
+tmp/*
+.nyc_output
+.env
+
+!*.gitkeep
