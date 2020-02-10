@@ -1,8 +1,11 @@
-.docker/volumes/*
+.docker
 
 node_modules
 tmp/*
 .nyc_output
 .env
+.cache
 
 !*.gitkeep
+
+static
