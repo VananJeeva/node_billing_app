@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Row, Col, CardFooter, FormGroup, Label, Input, Button } from "reactstrap"
 import { OrderItemForm } from "./OrderItemForm"
 import { set } from "mongoose"
+import { orderCreate } from "../network/rest"
 
 export function OrderCreate () {
     const history = useHistory()
@@ -13,7 +14,9 @@ export function OrderCreate () {
 
     const { register, handleSubmit } = orderCreateForm
 
-    const onSubmit = (data) => {console.log(data)}
+    const onSubmit = (data) => {
+        orderCreate(data).then(response => console.log(response))
+    }
 
     return (<div>
         <Row>
