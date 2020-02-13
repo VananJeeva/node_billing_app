@@ -1,9 +1,9 @@
-import axios from "axios"
+import axios from 'axios'
 
 export function orderCreate (data) {
-    return axios.post("/order", data)
+  return axios.post('/order', data)
 }
 
 export function orderList () {
-    return axios.get('orders')
+  return axios.get('orders')
 }

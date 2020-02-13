@@ -21,15 +21,14 @@ app.post('/order', orders.create)
 app.get('/order/:_id', orders.details)
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/../static/index.html'))
+  res.sendFile(path.resolve(__dirname, '../static/index.html'))
 })
 
-
 mongoose.connect(env.DB_URL, {
-    useNewUrlParser: true,
-    user: env.DB_USER,
-    pass: env.DB_PASS,
-    authSource: env.DB_AUTH
+  useNewUrlParser: true,
+  user: env.DB_USER,
+  pass: env.DB_PASS,
+  authSource: env.DB_AUTH
 })
 
 app.listen(env.APP_PORT, () => console.log(`App Running in Port ${env.APP_PORT}`))
