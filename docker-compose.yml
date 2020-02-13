@@ -4,6 +4,8 @@ services:
   db:
     image: mongo
     restart: always
+    ports:
+      - 27017:27017
     networks:
       - node_billing_app
     environment:
