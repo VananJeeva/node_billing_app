@@ -1,6 +1,9 @@
 import axios from "axios"
 
 export function orderCreate (data) {
-    const response = axios.post("/order", data)
-    return response
+    return axios.post("/order", data)
+}
+
+export function orderList () {
+    return axios.get('orders')
 }

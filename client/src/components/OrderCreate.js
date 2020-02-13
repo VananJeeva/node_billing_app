@@ -15,7 +15,12 @@ export function OrderCreate () {
     const { register, handleSubmit } = orderCreateForm
 
     const onSubmit = (data) => {
-        orderCreate(data).then(response => console.log(response))
+        orderCreate(data).then(response => {
+            const responseData = response.data
+            if (responseData.status === 200) {
+                history.push('/')
+            }
+        })
     }
 
     return (<div>

@@ -40,7 +40,7 @@ export function OrderItemForm (props) {
             <Col>
                 <FormGroup>
                     <Label>Net Price</Label>
-                    <Input readOnly type="number" name={`items[${props.index}].netPrice`} innerRef={register} />
+                    <Input readOnly disabled type="number" name={`items[${props.index}].netPrice`} innerRef={register} />
                 </FormGroup>
             </Col>
         </Row>

@@ -1,9 +1,23 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { Row, Col, Button } from "reactstrap"
 
+import { orderList } from "../network/rest"
+
 export function OrderList(params) {
     const history = useHistory()
+
+    const [orders, setOrders] = useState([])
+
+    useEffect(() => {
+        orderList().then(response => {
+            const responseData = response.data
+            if (responseData.status === 200) {
+                setOrders(responseData.data.orders)
+            }
+        })
+    }, [])
+
     return (<div>
         <Row>
             <Col>
@@ -20,17 +34,18 @@ export function OrderList(params) {
             <Col>Items Count</Col>
             <Col>Total Price</Col>
         </Row>
-        <Row className="mt-2">
-            <Col>123456</Col>
-            <Col>12/12/2019</Col>
-            <Col>5</Col>
-            <Col>50</Col>
-        </Row>
-        <Row className="mt-2">
-            <Col>123456</Col>
-            <Col>12/12/2019</Col>
-            <Col>5</Col>
-            <Col>50</Col>
-        </Row>
+        {orders.map(order => 
+            <Row className="mt-2" key={order._id}>
+                <Col>{order.number}</Col>
+                <Col>{order.dateFormated}</Col>
+                <Col>{order.items.length}</Col>
+                <Col>{order.totalPrice}</Col>
+            </Row>
+        )}
+        {orders.length === 0 && (
+            <Row className="mt-2">
+                <Col>Loading ...</Col>
+            </Row>
+        )}
     </div>)
 }
