@@ -11,7 +11,7 @@ export function OrderCreate () {
   const [total, setTotal] = useState(0)
   const orderCreateForm = useForm()
 
-  const { register, handleSubmit } = orderCreateForm
+  const { register, handleSubmit, errors } = orderCreateForm
 
   const onSubmit = (data) => {
     orderCreate(data).then(response => {
@@ -32,19 +32,30 @@ export function OrderCreate () {
     </Row>
     <Row className='mt-3'>
       <Col>
-        <FormGroup className='d-flex align-items-center'>
+        <FormGroup className='mb-0 d-flex align-items-center'>
           <Label className='mb-0'>Order No:</Label>
-          <Input className='w-25 ml-2' type='number' name='number' innerRef={register} />
+          <Input className='w-25 ml-2' type='number' name='number' innerRef={
+            register({
+              required: 'Please enter order no',
+              min: 1
+            })
+          } />
         </FormGroup>
+        <p className='text-danger mb-0'>{errors.number && errors.number.message}</p>
       </Col>
       <Col>
-        <FormGroup className='d-flex align-items-center justify-content-end'>
+        <FormGroup className='mb-0 d-flex align-items-center justify-content-end'>
           <Label className='mb-0'>Date:</Label>
-          <Input className='w-50 ml-2' type='date' name='date' innerRef={register} />
+          <Input className='w-50 ml-2' type='date' name='date' innerRef={
+            register({
+              required: 'Please enter date'
+            })
+          } />
         </FormGroup>
+        <p className='text-danger mb-0 text-right'>{errors.date && errors.date.message}</p>
       </Col>
     </Row>
-    <Row>
+    <Row className='mt-3'>
       <Col>
         {_.range(3).map(index => {
           return (<OrderItemForm key={index} index={index} orderCreateForm={orderCreateForm} setTotal={setTotal} />)
