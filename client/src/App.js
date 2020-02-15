@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container, Card, CardBody, CardHeader } from 'reactstrap'
 import { OrderCreate } from './components/OrderCreate'
 import { OrderList } from './components/OrderList'
+import { OrderDetails } from './components/OrderDetails'
 
 export function App () {
   return (<Container>
@@ -18,6 +19,7 @@ export function App () {
             <Switch>
               <Route exact path='/' component={OrderList} />
               <Route path='/create' component={OrderCreate} />
+              <Route path='/details/:_id' component={OrderDetails} />
             </Switch>
           </Suspense>
         </Router>

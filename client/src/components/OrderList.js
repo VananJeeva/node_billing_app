@@ -33,6 +33,7 @@ export function OrderList (params) {
       <Col>Date</Col>
       <Col>Items Count</Col>
       <Col>Total Price</Col>
+      <Col>Actions</Col>
     </Row>
     {orders.map(order =>
       <Row className='mt-2' key={order._id}>
@@ -40,6 +41,13 @@ export function OrderList (params) {
         <Col>{order.dateFormated}</Col>
         <Col>{order.items.length}</Col>
         <Col>{order.totalPrice}</Col>
+        <Col>
+          <Button color='primary' onClick={() => {
+            history.push('/details/' + order._id)
+          }}>
+            View
+          </Button>
+        </Col>
       </Row>
     )}
     {orders.length === 0 && (

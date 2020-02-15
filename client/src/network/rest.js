@@ -5,5 +5,9 @@ export function orderCreate (data) {
 }
 
 export function orderList () {
-  return axios.get('orders')
+  return axios.get('/orders')
+}
+
+export function orderDetails (_id) {
+  return axios.get('/order/' + _id)
 }
